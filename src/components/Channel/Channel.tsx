@@ -654,14 +654,14 @@ const ChannelInner = <
     await doSendMessage(messagePreview, customMessageData);
   };
 
-  const retrySendMessage = async (message: StreamMessage<StreamChatGenerics>) => {
+  const retrySendMessage = async (message: StreamMessage<StreamChatGenerics>, customMessageData?: Partial<Message<StreamChatGenerics>>) => {
     updateMessage({
       ...message,
       errorStatusCode: undefined,
       status: 'sending',
     });
 
-    await doSendMessage(message);
+    await doSendMessage(message, customMessageData);
   };
 
   const removeMessage = (message: StreamMessage<StreamChatGenerics>) => {
